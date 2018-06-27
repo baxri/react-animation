@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 class App extends Component {
   constructor(props) {
