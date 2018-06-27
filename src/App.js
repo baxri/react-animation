@@ -2,32 +2,27 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionReplace from 'react-css-transition-replace';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
-      toggle: 0,
+      value: '',
     };
   }
-  toggle() {
 
-    if (this.state.toggle == 1) {
-      this.setState({ toggle: 0, });
-    } else {
-      this.setState({ toggle: 1, });
-    }
+  valueChange(e) {
+    this.setState({ value: e.target.value })
   }
 
   render() {
     return (
       <div>
-        <input onClick={this.toggle} type="button" value="SHOW" />
         <ul>
-          <ReactCSSTransitionGroup transitionName="fade" >
-            {this.state.toggle == 1 && <h1>SHOW ME</h1>}
-          </ReactCSSTransitionGroup>
+          <label>NAME:</label>
+          <input type="text" value={this.state.value} onChange={(e) => this.valueChange(e)} className={this.state.value.length > 0 ? 'ok' : 'error'} />
+          <span className={this.state.value.length > 0 ? 'show' : 'hide'}>GOOD</span>
         </ul>
       </div>
     )
